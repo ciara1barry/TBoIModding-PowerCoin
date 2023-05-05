@@ -11,3 +11,22 @@ function mod:EvaluateCache(player, cacheFlags)
 end
 
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.EvaluateCache)
+
+local powerMorpher = Isaac.GetItemIdByName("Power Morpher")
+
+function mod:PowerMorpherUse(item)
+    local player = Isaac.GetPlayer(0)
+    local itemCount = player:GetCollectibleNum(powerCoin)
+    if itemCount > 0 then
+        player.Damage = (player.Damage * 1.5) + 1.5 else
+            player.Damage = player.Damage + 1.5
+    end
+
+    return {
+        Discharge = true,
+        Remove = false,
+        ShowAnim = true
+    }
+end
+
+mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.PowerMorpherUse, powerMorpher)
