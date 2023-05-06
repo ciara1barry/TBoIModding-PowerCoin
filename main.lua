@@ -17,6 +17,7 @@ function mod:PowerMorpherUse(item)
     local player = Isaac.GetPlayer(0)
     local itemCount = player:GetCollectibleNum(powerCoin)
 
+    --[[ old code
     if useCount > 0 then
         if itemCount > 0 then
             player.Damage = (player.Damage - 1.5)/1.5 else
@@ -27,15 +28,15 @@ function mod:PowerMorpherUse(item)
                 player:AddSoulHearts(2)
             end
     end
+    --]]
 
-    if itemCount > 0 then
+    if itemCount > 0 and useCount == 0 then
         player.Damage = (player.Damage * 1.5) + 1.5
-        useCount = useCount + 1 else
+        player:AddSoulHearts(2)
+        useCount = useCount + 1 elseif itemCount == 0 and useCount == 0 then
             player.Damage = player.Damage + 1.5
             useCount = useCount + 1
     end
-
-    Isaac.ConsoleOutput(tostring(useCount))
 
     return {
         Discharge = true,
@@ -44,5 +45,5 @@ function mod:PowerMorpherUse(item)
     }
 end
 
-mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.EvaluateCache)
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.PowerMorpherUse, powerMorpher)
+mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.EvaluateCache)
