@@ -29,10 +29,13 @@ function mod:PowerMorpherUse(item)
             end
     end
     --]]
-
+    
+    if itemCount > 0 then
+        player:AddSoulHearts(2)
+    end
+    
     if itemCount > 0 and useCount == 0 then
         player.Damage = (player.Damage * 1.5) + 1.5
-        player:AddSoulHearts(2)
         useCount = useCount + 1 elseif itemCount == 0 and useCount == 0 then
             player.Damage = player.Damage + 1.5
             useCount = useCount + 1
