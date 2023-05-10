@@ -37,31 +37,13 @@ function mod:PowerMorpherUse(item)
     local itemCount = player:GetCollectibleNum(powerCoin)
     
     if itemCount > 0 then
-        player:AddSoulHearts(2)
-    end
-    
-    if itemCount > 0 and useCount == 0 then
-        player.Damage = (player.Damage * 1.5) + 1.5
-        useCount = useCount + 1 elseif itemCount == 0 and useCount == 0 then
-            player.Damage = player.Damage + 1.5
-            useCount = useCount + 1
-    end
-
-    return {
-        Discharge = true,
-        Remove = false,
-        ShowAnim = true
-    }
-end
-
-function mod:BrokenPowerMorpherUse(item)
-    local player = Isaac.GetPlayer(0)
-    local itemCount = player:GetCollectibleNum(powerCoin)
-    
-    if itemCount > 0 then
-        local brokenHeartChance = math.random(1, 10)
-        if brokenHeartChance <= 5 then
-            player:AddBrokenHearts(1)
+        if item == brokenPowerMorpher then
+            local brokenHeartChance = math.random(1, 10)
+            if brokenHeartChance <= 5 then
+                player:AddBrokenHearts(1)
+            end
+        elseif item == powerMorpher then
+            player:AddSoulHearts(2)
         end
     end
     
@@ -81,5 +63,5 @@ end
 
 mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, mod.EnterNewRoom)
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.PowerMorpherUse, powerMorpher)
-mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.BrokenPowerMorpherUse, brokenPowerMorpher)
+mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.PowerMorpherUse, brokenPowerMorpher)
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.EvaluateCache)
