@@ -1,4 +1,5 @@
 <items gfxroot="gfx/items/" version="1">
     <passive id="1" name="Power Coin" gfx="power_coin_item.png" description="Fix your attitude!" quality="1" cache="damage" />
     <active id="2" name="Power Morpher" gfx="power_morpher_item.png" description="It's morphin' time!" quality="3" maxcharges="5" chargetype="normal" />
+    <active id="3" name="Broken Power Morpher" gfx="broken_power_morpher_item.png" description="It's morphin' time?" quality="1" maxcharges="2" chargetype="normal" />
 </items>
