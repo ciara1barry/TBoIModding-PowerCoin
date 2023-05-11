@@ -9,9 +9,12 @@ local BROKEN_HEART_CHANCE = 0.5
 
 local whiteDinoGem = Isaac.GetTrinketIdByName("White Dino Gem")
 local SLOW_COLOUR = Color(100, 100, 100)
+local blackDinoGem = Isaac.GetTrinketIdByName("Black Dino Gem")
+local CAMO_COLOUR = Color(1, 1, 1, 0.3, 1, 1, 1)
 
 function mod:EnterNewRoom()
     local player = Isaac.GetPlayer(0)
+    local entities = Isaac.GetRoomEntities()
     
     local itemCount = player:GetCollectibleNum(powerCoin)
     if useCount > 0 then
@@ -23,12 +26,20 @@ function mod:EnterNewRoom()
     end
 
     if (player:GetTrinket(0) or player:GetTrinket(1)) == whiteDinoGem then
-        local entities = Isaac.GetRoomEntities()
         for _, entity in ipairs(entities) do
             if entity:IsActiveEnemy() then
                 entity:AddSlowing(EntityRef(player), 240, 0.1, SLOW_COLOUR)
             end
         end
+    end
+
+    if (player:GetTrinket(0) or player:GetTrinket(1)) == blackDinoGem then
+        for i, entity in ipairs(entities) do
+            if entity:IsActiveEnemy() then
+                entity:AddConfusion(EntityRef(player), 150, false)
+            end
+        end
+        player:SetColor(CAMO_COLOUR, 150, 1, false, false)
     end
 end
 
