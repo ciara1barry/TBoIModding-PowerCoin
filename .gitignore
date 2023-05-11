@@ -1,5 +1,5 @@
 # ignore ALL .pxo files
 *.pxo
 
-# ignore temp spritesheet
+# ignore temp spritesheet file
 resources/gfx/items/trinkets/pickup_soulstones.png
