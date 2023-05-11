@@ -4,4 +4,7 @@
     <active id="2" name="Broken Power Morpher" gfx="broken_power_morpher_item.png" description="It's morphin' time?" quality="1" maxcharges="2" chargetype="normal" />
     <trinket id="3" name="White Dino Gem" gfx="white_dino_gem_trinket.png" description="Drago power!" />
     <trinket id="4" name="Black Dino Gem" gfx="black_dino_gem_trinket.png" description="Brachio power!" />
+    <trinket id="5" name="Red Dino Gem" gfx="red_dino_gem_trinket.png" description="Tyranno power!" />
+    <trinket id="6" name="Yellow Dino Gem" gfx="yellow_dino_gem_trinket.png" description="Ptera power!" />
+    <trinket id="7" name="Blue Dino Gem" gfx="blue_dino_gem_trinket.png" description="Tricera power!" />
 </items>
