@@ -2,4 +2,4 @@
 *.pxo
 
 # ignore temp spritesheet
-resources/gfx/items/pickup_soulstones.png
+resources/gfx/items/trinkets/pickup_soulstones.png
