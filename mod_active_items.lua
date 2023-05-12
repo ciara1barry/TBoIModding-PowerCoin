@@ -1,5 +1,6 @@
 POWER_MORPHER = Isaac.GetItemIdByName("Power Morpher")
 BROKEN_POWER_MORPHER = Isaac.GetItemIdByName("Broken Power Morpher")
+USE_COUNT = 0
 local BROKEN_HEART_CHANCE = 0.5
 
 function mod:PowerMorpherUse(item)
@@ -29,4 +30,13 @@ function mod:PowerMorpherUse(item)
         Remove = false,
         ShowAnim = true
     }
+end
+
+function CheckIfPowerMorpherUsed(player, itemCount)
+    if USE_COUNT > 0 then
+        if itemCount > 0 then
+            player.Damage = (player.Damage * 1.5) + 1.5 elseif itemCount == 0 then
+                player.Damage = player.Damage + 1.5
+        end
+    end
 end
