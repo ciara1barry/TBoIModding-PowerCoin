@@ -7,4 +7,5 @@
     <trinket id="5" name="Red Dino Gem" gfx="red_dino_gem_trinket.png" description="Tyranno power!" />
     <trinket id="6" name="Yellow Dino Gem" gfx="yellow_dino_gem_trinket.png" description="Ptera power!" />
     <trinket id="7" name="Blue Dino Gem" gfx="blue_dino_gem_trinket.png" description="Tricera power!" />
+    <passive id="8" name="Cobra" gfx="cobra_tattoo_item.png" description="A diabolical deal..." quality="4" />
 </items>
