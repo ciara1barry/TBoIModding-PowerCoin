@@ -6,8 +6,7 @@ To install this mod, simply:
 1. Download and unzip the repository  
 2. Put the folder in your "mods" folder inside your ...\Steam\steamapps\common\The Binding of Isaac Rebirth\ directory  
   
-Steam may be installed in a different folder depending on how you chose to set it up. To easily find it, go to your game  
-on the Steam client and right-click to make a drop-down menu appear. Hover over "Manage" and choose to browse the files/directory.  
+Steam may be installed in a different folder depending on how you chose to set it up. To easily find it, go to your game on the Steam client and right-click to make a drop-down menu appear. Hover over "Manage" and choose to browse the files/directory.  
   
 ## Future Changes  
 1. Items referencing various objects from the *Power Rangers* continuity.  
