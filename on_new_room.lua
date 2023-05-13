@@ -10,6 +10,7 @@ local YELLOW_DINO_GEM_REVELATION = false
 local blueDinoGem = Isaac.GetTrinketIdByName("Blue Dino Gem")
 local BLUE_DINO_GEM_WAFER = false
 local DEVILS_CROWN = 146
+local POUND_OF_FLESH = 672
 
 function mod:EnterNewRoom()
     local player = Isaac.GetPlayer(0)
@@ -17,12 +18,14 @@ function mod:EnterNewRoom()
     local rng = player.GetTrinketRNG(player, redDinoGem)
     local trinket0 = player:GetTrinket(0)
     local trinket1 = player:GetTrinket(1)
+    local room = Game():GetRoom()
 
     if player:HasCollectible(COBRA_CURSE) then
-        if (Game():GetRoom():GetType() == RoomType.ROOM_DEVIL) or 
-            (Game():GetRoom():GetType() == RoomType.ROOM_TREASURE and ((trinket0 or trinket1) == DEVILS_CROWN)) or
-            (Game():GetLevel():GetStage() == LevelStage.STAGE6 and Game():GetRoom():GetType() == RoomType.ROOM_DEFAULT) then
-                player:UseCard(Card.CARD_CREDIT, 1)
+        if (room:GetType() == RoomType.ROOM_DEVIL) or
+            (room:GetType() == RoomType.ROOM_SHOP and player:HasCollectible(POUND_OF_FLESH, true)) or
+            (room:GetType() == RoomType.ROOM_TREASURE and ((trinket0 or trinket1) == DEVILS_CROWN)) or
+            (Game():GetLevel():GetStage() == LevelStage.STAGE6 and room:GetType() == RoomType.ROOM_DEFAULT) then
+                player:UseCard(Card.CARD_CREDIT, UseFlag.USE_NOANIM | UseFlag.USE_NOANNOUNCER)
         end
     end
     
