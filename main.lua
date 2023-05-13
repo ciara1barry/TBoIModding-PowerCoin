@@ -21,8 +21,7 @@ end
 
 function mod:FreeDevilDeal(entity)
     if (Game():GetLevel():GetStage() == LevelStage.STAGE6) and (Isaac.GetPlayer(0):HasCollectible(COBRA_CURSE, true))
-        and (entity) then
-            Isaac.ConsoleOutput(tostring(entity.Variant))
+        and (entity.Variant == EffectVariant.POOF01) then
             Isaac.GetPlayer(0):UseCard(Card.CARD_CREDIT, UseFlag.USE_NOANIM | UseFlag.USE_NOANNOUNCER)
     end
 end
