@@ -4,11 +4,9 @@ local blackDinoGem = Isaac.GetTrinketIdByName("Black Dino Gem")
 local CAMO_COLOUR = Color(1, 1, 1, 0.3, 1, 1, 1)
 local redDinoGem = Isaac.GetTrinketIdByName("Red Dino Gem")
 local DINO_GEM_CHANCE = 0.50
-local RED_DINO_GEM_EFFECTS = false
 local yellowDinoGem = Isaac.GetTrinketIdByName("Yellow Dino Gem")
-local YELLOW_DINO_GEM_EFFECTS = false
 local blueDinoGem = Isaac.GetTrinketIdByName("Blue Dino Gem")
-local BLUE_DINO_GEM_EFFECTS = false
+local DINO_GEM_EFFECTS = {false, false, false}
 
 --[[
 Instead of calling the API to get the IDs of this vanilla item and trinket by their names, just set the ID manually
@@ -65,27 +63,27 @@ function CheckTrinkets(player, room, trinket0, trinket1)
         elseif (trinket0 or trinket1) == redDinoGem then
             if rng:RandomFloat() < DINO_GEM_CHANCE then
                 player.MoveSpeed = player.MoveSpeed + 1
-                RED_DINO_GEM_EFFECTS = true
-            elseif RED_DINO_GEM_EFFECTS == true then
+                DINO_GEM_EFFECTS[0] = true
+            elseif DINO_GEM_EFFECTS[0] == true then
                 player.MoveSpeed = player.MoveSpeed - 1
-                RED_DINO_GEM_EFFECTS = false
+                DINO_GEM_EFFECTS[0] = false
             end
         elseif (trinket0 or trinket1) == blueDinoGem then
             if rng:RandomFloat() < DINO_GEM_CHANCE then
                 player:GetEffects():AddCollectibleEffect(CollectibleType.COLLECTIBLE_WAFER)
-                BLUE_DINO_GEM_EFFECTS = true
-            elseif BLUE_DINO_GEM_EFFECTS == true then
+                DINO_GEM_EFFECTS[1] = true
+            elseif DINO_GEM_EFFECTS[1] == true then
                 player:RemoveCollectible(CollectibleType.COLLECTIBLE_WAFER)
-                BLUE_DINO_GEM_EFFECTS = false
+                DINO_GEM_EFFECTS[1] = false
             end
         elseif (trinket0 or trinket1) == yellowDinoGem then
             if rng:RandomFloat() < DINO_GEM_CHANCE then
                 player:UseCard(Card.CARD_HANGED_MAN, UseFlag.USE_NOANIM | UseFlag.USE_NOANNOUNCER | UseFlag.USE_NOCOSTUME)
                 player:GetEffects():AddCollectibleEffect(CollectibleType.COLLECTIBLE_DEAD_DOVE)
-                YELLOW_DINO_GEM_EFFECTS = true 
-            elseif YELLOW_DINO_GEM_EFFECTS == true then
+                DINO_GEM_EFFECTS[2] = true
+            elseif DINO_GEM_EFFECTS[2] == true then
                 player:RemoveCollectible(CollectibleType.COLLECTIBLE_DEAD_DOVE)
-                YELLOW_DINO_GEM_EFFECTS = false
+                DINO_GEM_EFFECTS[2] = false
             end
         end
     end

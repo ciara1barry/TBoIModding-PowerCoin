@@ -26,7 +26,7 @@ function mod:FreeDevilDeal(entity)
     end
 end
 
-mod:AddCallback(ModCallbacks.MC_POST_ENTITY_REMOVE, mod.FreeDevilDeal)
+mod:AddCallback(ModCallbacks.MC_POST_EFFECT_INIT, mod.FreeDevilDeal)
 mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, mod.EnterNewRoom)
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.PowerMorpherUse, POWER_MORPHER)
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.PowerMorpherUse, BROKEN_POWER_MORPHER)
