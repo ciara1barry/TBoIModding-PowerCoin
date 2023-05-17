@@ -28,6 +28,7 @@ end
 
 mod:AddCallback(ModCallbacks.MC_POST_EFFECT_INIT, mod.FreeDevilDeal)
 mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, mod.EnterNewRoom)
+mod:AddCallback(ModCallbacks.MC_PRE_USE_ITEM, mod.RemovePMStatsOnFlip, 711)
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.PowerMorpherUse, POWER_MORPHER)
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.PowerMorpherUse, BROKEN_POWER_MORPHER)
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.EvaluateCache)

@@ -40,3 +40,20 @@ function CheckIfPowerMorpherUsed(player, itemCount)
         end
     end
 end
+
+function mod:RemovePMStatsOnFlip(item)
+    local player = Isaac.GetPlayer(0)
+    local itemCount = player:GetCollectibleNum(POWER_COIN)
+
+    if player:GetPlayerType() == PlayerType.PLAYER_LAZARUS_B then
+        if player:HasCollectible(POWER_MORPHER, true) or player:HasCollectible(BROKEN_POWER_MORPHER, true) then
+            if USE_COUNT > 0 then
+                if itemCount > 0 then
+                    player.Damage = (player.Damage - 1.5)/1.5 else
+                        player.Damage = player.Damage - 1.5
+                end 
+                USE_COUNT = 0
+            end
+        end
+    end
+end
