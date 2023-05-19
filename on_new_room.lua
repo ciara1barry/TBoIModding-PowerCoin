@@ -48,18 +48,22 @@ function CheckTrinkets(player, room, trinket0, trinket1)
 
     if room:IsClear() == false then
         if (trinket0 or trinket1) == WHITE_DINO_GEM then
-            for _, entity in ipairs(entities) do
-                if entity:IsActiveEnemy() then
-                    entity:AddSlowing(EntityRef(player), 240, 0.1, SLOW_COLOUR)
+            if rng:RandomFloat() < DINO_GEM_CHANCE then
+                for _, entity in ipairs(entities) do
+                    if entity:IsActiveEnemy() then
+                        entity:AddSlowing(EntityRef(player), 240, 0.1, SLOW_COLOUR)
+                    end
                 end
             end
         elseif (trinket0 or trinket1) == BLACK_DINO_GEM then
-            for _, entity in ipairs(entities) do
-                if entity:IsActiveEnemy() then
-                    entity:AddConfusion(EntityRef(player), 150, false)
+            if rng:RandomFloat() < DINO_GEM_CHANCE then
+                for _, entity in ipairs(entities) do
+                    if entity:IsActiveEnemy() then
+                        entity:AddConfusion(EntityRef(player), 150, false)
+                    end
                 end
+                player:SetColor(CAMO_COLOUR, 150, 1, false, false)
             end
-            player:SetColor(CAMO_COLOUR, 150, 1, false, false)
         elseif (trinket0 or trinket1) == RED_DINO_GEM then
             if rng:RandomFloat() < DINO_GEM_CHANCE then
                 player.MoveSpeed = player.MoveSpeed + 1

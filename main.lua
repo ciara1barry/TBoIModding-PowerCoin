@@ -19,7 +19,7 @@ function mod:EvaluateCache(player, cacheFlags)
     end
 end
 
-function mod:FreeDevilDeal(entity)
+function mod:FreeDevilDealOnDarkRoom(entity)
     if (Game():GetLevel():GetStage() == LevelStage.STAGE6) and (Isaac.GetPlayer(0):HasCollectible(COBRA_CURSE, true))
         and (entity.Variant == EffectVariant.POOF01) then
             Isaac.GetPlayer(0):UseCard(Card.CARD_CREDIT, UseFlag.USE_NOANIM | UseFlag.USE_NOANNOUNCER)
@@ -28,7 +28,7 @@ end
 
 --[Add External Item Descriptions]
 if EID then
-    EID:addCollectible(POWER_COIN, "+1.0 Damage Up")
+    EID:addCollectible(POWER_COIN, "↑ +1 Damage Up")
     EID:addCollectible(POWER_MORPHER,
     "Upon use gives +1.5 damage up which lasts for the current room#If holding 'Power Coin', also gives: x1.5 damage multipler and a soul heart")
     EID:addCollectible(BROKEN_POWER_MORPHER,
@@ -43,7 +43,7 @@ if EID then
     EID:addTrinket(BLUE_DINO_GEM, "10% chance of reducing all damage taken to half a heart upon entering a new room")
 end
 
-mod:AddCallback(ModCallbacks.MC_POST_EFFECT_INIT, mod.FreeDevilDeal)
+mod:AddCallback(ModCallbacks.MC_POST_EFFECT_INIT, mod.FreeDevilDealOnDarkRoom)
 mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, mod.EnterNewRoom)
 mod:AddCallback(ModCallbacks.MC_PRE_USE_ITEM, mod.RemovePMStatsOnFlip, 711)
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.PowerMorpherUse, POWER_MORPHER)

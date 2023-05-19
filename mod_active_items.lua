@@ -1,7 +1,7 @@
 POWER_MORPHER = Isaac.GetItemIdByName("Power Morpher")
 BROKEN_POWER_MORPHER = Isaac.GetItemIdByName("Broken Power Morpher")
 USE_COUNT = 0
-local BROKEN_HEART_CHANCE = 0.5
+local BROKEN_HEART_CHANCE = 0.3
 
 function mod:PowerMorpherUse(item)
     local player = Isaac.GetPlayer(0)

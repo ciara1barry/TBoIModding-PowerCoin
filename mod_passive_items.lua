@@ -16,6 +16,7 @@ function CobraDeathOnCollect(player)
     if player:GetCollectibleCount() > totalCollectibles then
         local rng = player:GetCollectibleRNG(COBRA_CURSE)
         if rng:RandomFloat() < COBRA_DEATH_CHANCE then
+            player:RemoveCollectible(COBRA_CURSE)
             player:Kill()
         end
         totalCollectibles = player:GetCollectibleCount()
