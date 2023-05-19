@@ -1,11 +1,11 @@
-local whiteDinoGem = Isaac.GetTrinketIdByName("White Dino Gem")
+WHITE_DINO_GEM = Isaac.GetTrinketIdByName("White Dino Gem")
 local SLOW_COLOUR = Color(100, 100, 100)
-local blackDinoGem = Isaac.GetTrinketIdByName("Black Dino Gem")
+BLACK_DINO_GEM = Isaac.GetTrinketIdByName("Black Dino Gem")
 local CAMO_COLOUR = Color(1, 1, 1, 0.3, 1, 1, 1)
-local redDinoGem = Isaac.GetTrinketIdByName("Red Dino Gem")
+RED_DINO_GEM = Isaac.GetTrinketIdByName("Red Dino Gem")
 local DINO_GEM_CHANCE = 0.50
-local yellowDinoGem = Isaac.GetTrinketIdByName("Yellow Dino Gem")
-local blueDinoGem = Isaac.GetTrinketIdByName("Blue Dino Gem")
+YELLOW_DINO_GEM = Isaac.GetTrinketIdByName("Yellow Dino Gem")
+BLUE_DINO_GEM = Isaac.GetTrinketIdByName("Blue Dino Gem")
 local DINO_GEM_EFFECTS = {false, false, false}
 
 --[[
@@ -44,23 +44,23 @@ end
 
 function CheckTrinkets(player, room, trinket0, trinket1)
     local entities = Isaac.GetRoomEntities()
-    local rng = player.GetTrinketRNG(player, redDinoGem)
+    local rng = player.GetTrinketRNG(player, RED_DINO_GEM)
 
     if room:IsClear() == false then
-        if (trinket0 or trinket1) == whiteDinoGem then
+        if (trinket0 or trinket1) == WHITE_DINO_GEM then
             for _, entity in ipairs(entities) do
                 if entity:IsActiveEnemy() then
                     entity:AddSlowing(EntityRef(player), 240, 0.1, SLOW_COLOUR)
                 end
             end
-        elseif (trinket0 or trinket1) == blackDinoGem then
+        elseif (trinket0 or trinket1) == BLACK_DINO_GEM then
             for _, entity in ipairs(entities) do
                 if entity:IsActiveEnemy() then
                     entity:AddConfusion(EntityRef(player), 150, false)
                 end
             end
             player:SetColor(CAMO_COLOUR, 150, 1, false, false)
-        elseif (trinket0 or trinket1) == redDinoGem then
+        elseif (trinket0 or trinket1) == RED_DINO_GEM then
             if rng:RandomFloat() < DINO_GEM_CHANCE then
                 player.MoveSpeed = player.MoveSpeed + 1
                 DINO_GEM_EFFECTS[0] = true
@@ -68,7 +68,7 @@ function CheckTrinkets(player, room, trinket0, trinket1)
                 player.MoveSpeed = player.MoveSpeed - 1
                 DINO_GEM_EFFECTS[0] = false
             end
-        elseif (trinket0 or trinket1) == blueDinoGem then
+        elseif (trinket0 or trinket1) == BLUE_DINO_GEM then
             if rng:RandomFloat() < DINO_GEM_CHANCE then
                 player:GetEffects():AddCollectibleEffect(CollectibleType.COLLECTIBLE_WAFER)
                 DINO_GEM_EFFECTS[1] = true
@@ -76,7 +76,7 @@ function CheckTrinkets(player, room, trinket0, trinket1)
                 player:RemoveCollectible(CollectibleType.COLLECTIBLE_WAFER)
                 DINO_GEM_EFFECTS[1] = false
             end
-        elseif (trinket0 or trinket1) == yellowDinoGem then
+        elseif (trinket0 or trinket1) == YELLOW_DINO_GEM then
             if rng:RandomFloat() < DINO_GEM_CHANCE then
                 player:UseCard(Card.CARD_HANGED_MAN, UseFlag.USE_NOANIM | UseFlag.USE_NOANNOUNCER | UseFlag.USE_NOCOSTUME)
                 player:GetEffects():AddCollectibleEffect(CollectibleType.COLLECTIBLE_DEAD_DOVE)

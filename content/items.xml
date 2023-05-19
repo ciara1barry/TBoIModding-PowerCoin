@@ -1,5 +1,5 @@
 <items gfxroot="gfx/items/" deathanm2="gfx/death_items.anm2" version="1">
-    <passive id="0" name="Power Coin" gfx="power_coin_item.png" description="Fix your attitude!" quality="1" cache="damage" />
+    <passive id="0" name="Power Coin" gfx="power_coin_item.png" description="Fix your attitude!" quality="2" cache="damage" />
     <active id="1" name="Power Morpher" gfx="power_morpher_item.png" description="It's morphin' time!" quality="3" maxcharges="5" chargetype="normal" />
     <active id="2" name="Broken Power Morpher" gfx="broken_power_morpher_item.png" description="It's morphin' time?" quality="1" maxcharges="2" chargetype="normal" />
     <passive id="3" name="Cobra" gfx="cobra_tattoo_item.png" description="A diabolical deal..." quality="4" />

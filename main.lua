@@ -26,6 +26,23 @@ function mod:FreeDevilDeal(entity)
     end
 end
 
+--[Add External Item Descriptions]
+if EID then
+    EID:addCollectible(POWER_COIN, "+1.0 Damage Up")
+    EID:addCollectible(POWER_MORPHER,
+    "Upon use gives +1.5 damage up which lasts for the current room#If holding 'Power Coin', also gives: x1.5 damage multipler and a soul heart")
+    EID:addCollectible(BROKEN_POWER_MORPHER,
+    "Upon use gives +1.5 damage up which lasts for the current room#If holding 'Power Coin', also gives: x1.5 damage multipler and a 30% chance of a broken heart")
+    EID:addCollectible(COBRA_CURSE,
+    "All devil deals are now free, including those provided by items like 'Pound of Flesh'#3% chance of being killed every time a collectible is picked up#Upon death, 'Cobra' is removed from the inventory")
+    
+    EID:addTrinket(WHITE_DINO_GEM, "Enemies have a 10% chance of being severely slowed for 5 seconds upon entering a new room")
+    EID:addTrinket(BLACK_DINO_GEM, "10% chance of Isaac becoming camoflauged and enemies being confused for 5 seconds upon entering a new room")
+    EID:addTrinket(RED_DINO_GEM, "10% chance of +1 speed upon entering a new room")
+    EID:addTrinket(YELLOW_DINO_GEM, "10% chance of granting Isaac flight upon entering a new room")
+    EID:addTrinket(BLUE_DINO_GEM, "10% chance of reducing all damage taken to half a heart upon entering a new room")
+end
+
 mod:AddCallback(ModCallbacks.MC_POST_EFFECT_INIT, mod.FreeDevilDeal)
 mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, mod.EnterNewRoom)
 mod:AddCallback(ModCallbacks.MC_PRE_USE_ITEM, mod.RemovePMStatsOnFlip, 711)
